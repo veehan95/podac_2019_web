@@ -1,8 +1,6 @@
 import Container from '../../components/container'
 import Table from '../../components/table'
-import db from '../../db'
-
-const db_ref = db.ref("feedbacks")
+import { get_rating_list, get_agent } from '../../assets/db'
 
 export default {
     name: 'home',
@@ -19,36 +17,31 @@ export default {
       }
     },
     beforeCreate() { this.$emit('page', 'Ratings') },
+    methods: {
+      async createRow(location, row) {
+        let agent = "N/A"
+        if (row.agent_assigned != undefined) {
+          const name = await get_agent(row.agent_assigned)
+          agent = `${name.last_name} ${name.first_name}`
+        }
+        return {
+          loc: location.replace(/_/g, ' '),
+          href: location,
+          rating: (row.total_rating / row.number_of_ratings).toFixed(2),
+          rating_q: row.number_of_ratings,
+          agent,
+          danger: (row.total_rating / row.number_of_ratings) < 2
+        }
+      },
+      async updateTable() {
+        const list = await get_rating_list()
+        const vals_promise = Object.keys(list)
+          .map(key => this.createRow(key, list[key]))
+        const vals = await Promise.all(vals_promise)
+        this.$data.vals = vals.sort((a, b) => (a.rating > b.rating) ? 1 : -1)
+      },
+    },
     mounted() {
-      db_ref.once("value")
-        .then(snapshot => {
-          const temp = {}
-          const vals = snapshot.val()
-
-          Object.keys(vals)
-            .forEach(val => {
-              const loc = vals[val].location
-              if (temp[loc] == undefined)
-                temp[loc] = [vals[val]]
-              else
-                temp[loc].push(vals[val])
-            })
-
-          return temp
-        })
-        .then(to_display => {
-          return Object.keys(to_display)
-            .map(loc => {
-              const rating_q = to_display[loc].length
-              const ttl_rating = to_display[loc]
-                .reduce((x, y) => x + y.rating, 0)
-
-              return {
-                id: loc,
-                data: {loc, rating: (ttl_rating/rating_q).toFixed(2), rating_q},
-              }
-            })
-        })
-        .then(vals => this.$data.vals = vals)
+      this.updateTable()
     }
 }

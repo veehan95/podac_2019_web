@@ -24,8 +24,16 @@ table
       background-color: #929AA6
     &:nth-child(odd)
       background: rgba(220, 220, 220, .47)
-
-.clickable
-  cursor: pointer
-  &:hover
-    background-color: red
+      &.danger
+        background: rgba(255, 100, 100, .47)
+      &.clickable
+        &:hover
+          background-color: rgba(180, 180, 180, .47)
+    &:nth-child(even)
+      &.danger
+        background: rgba(255, 220, 220, .47)
+      &.clickable
+        &:hover
+          background-color: rgba(250, 250, 250, .27)
+    &.clickable
+      cursor: pointer

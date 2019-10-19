@@ -8,11 +8,10 @@ var options = {
     scales: {
         xAxes: [{
           gridLines: { color: "#131c2b", display: false },
-          ticks: { beginAtZero: true, min: 0 },
         }],
         yAxes: [{
-          gridLines: { color: "#131c2b", display: false },
-          ticks: { beginAtZero: true, max: 5, stepSize: 1, display: false },
+          gridLines: { color: "#131c2b", display: true },
+          ticks: { beginAtZero: true, max: 5, stepSize: 1, display: true },
         }],
     }
 }
@@ -23,8 +22,10 @@ export default {
   props: ["points"],
   watch: {
     points: function(newVal) {
-      newVal
-      this.renderChart({datasets: [{data: newVal}]}, options)
+      this.renderChart({
+        labels: newVal.map(item => item.x),
+        datasets: [{data: newVal}]
+      }, options)
     }
   },
 }

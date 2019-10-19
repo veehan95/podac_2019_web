@@ -35,9 +35,6 @@ const routes = [
     path: `/location/:id`,
     component: Location,
     name: "Location",
-    meta: {
-      isPublic: true,
-    },
   },
 ]
 

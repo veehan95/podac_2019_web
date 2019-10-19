@@ -4,4 +4,4 @@ Container(title="Location")
     AnalyticCardLine(:val_obj="line_data" style="width: 45%; height: 222px")
   div
     h2 Feedbacks
-    Card(v-for="feedback in feedbacks" :title="feedback.user" :details="[feedback]")
+    Card(v-for="feedback in feedbacks" :details="feedback")

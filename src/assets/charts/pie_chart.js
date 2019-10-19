@@ -11,12 +11,7 @@ const options = {
 export default {
   extends: Pie,
   name: 'Pie_Chart',
-  props: {
-    rating: {
-      type: Number,
-      validator: value => 0 <= value && value <= 5
-    }
-  },
+  props: ["rating"],
   watch: {
     rating: function(newVal) {
       this.renderChart({

@@ -5,6 +5,10 @@ export default {
     data: Array,
   },
   methods: {
-    rowClicked() { alert("clicked") }
+    rowClicked(self) {
+      //eslint-disable-next-line
+      console.log(self.target.parentElement)
+      this.$router.push(`/location/${self.target.parentElement.id}`)
+    }
   }
 }

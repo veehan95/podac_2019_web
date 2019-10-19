@@ -1,5 +1,5 @@
 table
   tr#header
     th(v-for="thead in theads" :class="thead.align") {{ thead.name }}
-  tr(v-for="val in data" class="clickable" @click="rowClicked")
-    td(v-for="thead in theads" :class="thead.align") {{ val.data[thead.prop] || 'N/A' }}
+  tr(v-for="val in data" :id="val.href" :class="{clickable: true, danger: val.danger}" @click="rowClicked")
+    td(v-for="thead in theads" :class="thead.align") {{ val[thead.prop] || 'N/A' }}

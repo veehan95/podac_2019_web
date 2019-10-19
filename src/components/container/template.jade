@@ -3,9 +3,22 @@
   #page_container
     #header
       h1 {{ title }}
-      button.small
-        img.center(src="@/assets/icon/notification.png")
-      button.large
-        img.round.center(src="@/assets/icon/default_user_profile.png")
+      div.small
+        button.small(@click="openNotification")
+          img.center(src="@/assets/icon/notification.png")
+        #notification.sub(style="display: none")
+          p.center.text_center no notification
+      div.large
+        button.large(@click="openUserInfo")
+          img.round.center(src="@/assets/icon/default_user_profile.png")
+        #user_info.sub(style="display: none")
+          h3(style="text-align: left") Agent 1
+          p agent1@email.com
+          hr(style="margin: 10px 0")
+          button(style="text-align: left") Setting
+          button(style="text-align: left") FAQ
+          button(style="text-align: left") Help
+          hr(style="margin: 10px 0")
+          button(style="text-align: left" @click="logout") logout
     #content
       slot
