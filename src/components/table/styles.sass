@@ -1,0 +1,31 @@
+table, th, td
+  border-size: 0px
+  border-right: 1px solid rgba(#707070, .60)
+  white-space: nowrap
+  overflow: hidden
+
+th, td
+  &.left
+    text-align: left
+
+table
+  width: 100%
+  border-collapse: collapse
+  td
+    font-size: 30px
+    padding: 10px 20px
+    text-align: center
+  th
+    font-size: 40px
+    padding: 10px 20px
+  tr
+    background-color: rgba(255, 255, 255, .47)
+    &#header
+      background-color: #929AA6
+    &:nth-child(odd)
+      background: rgba(220, 220, 220, .47)
+
+.clickable
+  cursor: pointer
+  &:hover
+    background-color: red

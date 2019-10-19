@@ -1,0 +1,26 @@
+$width: 140px
+
+.nav_container
+  box-shadow: 5px 0 5px rgba(0, 0, 0, .4)
+  background-color: #64918D
+  width: $width
+  display: flex
+  flex-flow: column
+  height: 100vh
+
+  .outer_div
+    height: $width
+
+  .center_div
+    flex: 2
+    position: relative
+
+    ul
+      li
+        height: 140px
+        position: relative
+        &.active
+          background-color: rgba(255, 255, 255, .3)
+        img
+          width: 100px
+          height: 100px

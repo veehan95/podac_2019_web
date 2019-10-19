@@ -1,0 +1,11 @@
+#content_container
+  #background_deco
+  #page_container
+    #header
+      h1 {{ title }}
+      button.small
+        img.center(src="@/assets/icon/notification.png")
+      button.large
+        img.round.center(src="@/assets/icon/default_user_profile.png")
+    #content
+      slot

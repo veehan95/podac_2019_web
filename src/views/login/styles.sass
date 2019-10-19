@@ -1,0 +1,43 @@
+@import '../../assets/sass/variables'
+
+#parent_frame
+  display: flex
+  height: 100%
+  div
+    width: 50%
+  *
+    font-size: 30px
+  br
+    content: ""
+    margin: 2em
+    display: block
+    font-size: 5px
+  #app_detail
+    background-image: $background-image
+    background-color: $background-color
+  #login, #app_detail
+    position: relative
+  #app_detail
+    text-align: center
+  #login
+    #login_container
+      width: 70%
+      padding: 40px 20px
+      border-radius: 10px
+      background-color: #A5CDCD
+      #login_form, #login_submit
+        width: calc(100% - 20px)
+      #login_submit
+        width: 100%
+        padding-top: 20px
+
+label
+  width: 20%
+input, button
+  border-radius: 10px
+  padding: 10px
+input
+  background-color: rgba(255, 255, 255, .5)
+button
+  background-color: #64918D
+  color: white
