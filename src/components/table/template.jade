@@ -1,5 +1,6 @@
-table
-  tr#header
-    th(v-for="thead in theads" :class="thead.align") {{ thead.name }}
-  tr(v-for="val in data" :id="val.href" :class="{clickable: true, danger: val.danger}" @click="rowClicked")
-    td(v-for="thead in theads" :class="thead.align") {{ val[thead.prop] || 'N/A' }}
+div
+  table
+    tr#header
+      th(v-for='thead in theads' :class='thead.align') {{ thead.name }}
+    Loading(:colspan='theads.length' :rowspan='rowspan' v-if='loading')
+    Row(v-for='(each, i) in process_data' :key='i' :values='each.values' :clickable='clickable' :danger='each.danger' :align='each.align' :url='each.url' :e_fire='each.e_fire' :image='each.image')

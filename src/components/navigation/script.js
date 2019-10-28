@@ -1,9 +1,14 @@
-import { routes } from '../../routes';
+import { routes } from '@/routes'
+import { mapState } from 'vuex'
 
 export default {
   name: 'LeftNavigation',
-  props: { page_name: String },
-  data() { return { navigation: [] }},
+  computed: mapState(['page_name']),
+  data() {
+    return {
+      navigation: [],
+    }
+  },
   beforeMount() {
     this.$data.navigation = routes
       .filter(route => route.meta ? route.meta.showOnNav : false)

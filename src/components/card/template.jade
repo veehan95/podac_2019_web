@@ -1,5 +1,8 @@
 #card
-  p icon(need wait firebase image)
   h1 {{ title }}
-  p(v-for="detail in details") {{detail}}
+  .flex
+    .left_column(style="margin: auto")
+      slot(name='left')
+    .content(style="position: relative")
+      slot(name='content')
   

@@ -7,19 +7,26 @@ var options = {
     tooltips: { enabled: false },
     scales: {
         xAxes: [{
-          gridLines: { color: "#131c2b", display: false },
+          gridLines: { color: 'black', display: false },
+          ticks: { fontColor: 'black' },
         }],
         yAxes: [{
-          gridLines: { color: "#131c2b", display: true },
-          ticks: { beginAtZero: true, max: 5, stepSize: 1, display: true },
+          gridLines: { color: 'black', display: true },
+          ticks: { beginAtZero: true, max: 5, stepSize: 1, display: true, fontColor: 'black' },
         }],
+    },
+    title: {
+      display: true,
+      text: 'Ratings in the past 6 months',
+      fontColor: 'black'
     }
 }
 
 export default {
   extends: Line,
   name: 'Line_Chart',
-  props: ["points"],
+  props: ['points'],
+  data() { return { data: [] } },
   watch: {
     points: function(newVal) {
       this.renderChart({

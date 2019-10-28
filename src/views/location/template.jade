@@ -1,7 +1,20 @@
-Container(title="Location")
-  .flex
-    AnalyticCardPie(:val_obj="pie_data" style="width: 40%")
-    AnalyticCardLine(:val_obj="line_data" style="width: 45%; height: 222px")
+Container(title='Location')
+  .flex(style="height: 350px")
+    Card(title="Summary" style="margin: 10px; width: 40%;padding: 10px")
+      template(slot='left')
+        div(style='width: 200px;height: 200px; position: relative;margin:auto')
+          Pie(:rating='pie_data.average_rating' style="margin: auto")
+          p.center(style='text-align: center') {{ pie_data.average_rating }}
+        h3 Average Rating
+      template(slot='content')
+        #detail_div.center
+          p Severity: {{ pie_data.severity }}
+          p Number of Ratings: {{ pie_data.number_of_ratings }}
+          p Agent Assigned: {{ pie_data.agent_assigned }}
+    LineChartCard(:val_obj='line_data' style="margin: 10px; width: 40%;padding: 10px")
   div
     h2 Feedbacks
-    Card(v-for="feedback in feedbacks" :details="feedback")
+    Table(:theads='feedback_header' :data='feedbacks')
+  div(v-if="show_image" style='background-color:rgb(0,0,0,.4);position:absolute;width: 100%;top:30%;left:0')
+    img(:src="img_large" style="margin: auto")
+    button(@click="close_image()" style="background:rgba(0,0,0,.6);color:white") Close Image

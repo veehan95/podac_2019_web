@@ -8,7 +8,7 @@
   *
     font-size: 30px
   br
-    content: ""
+    content: ''
     margin: 2em
     display: block
     font-size: 5px
@@ -25,11 +25,24 @@
       padding: 40px 20px
       border-radius: 10px
       background-color: #A5CDCD
+      position: relative
       #login_form, #login_submit
         width: calc(100% - 20px)
       #login_submit
         width: 100%
         padding-top: 20px
+
+#shade
+  position: absolute
+  border-radius: 10px
+  background: rgba(0, 0, 0, .5)
+  color: white
+  width: 100% !important
+  height: 100%
+  top: 0
+  left: 0
+  p
+    text-align: center
 
 label
   width: 20%

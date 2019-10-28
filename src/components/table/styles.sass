@@ -1,39 +1,47 @@
-table, th, td
-  border-size: 0px
-  border-right: 1px solid rgba(#707070, .60)
+@import '@/assets/sass/variables'
+
+table, th
+  border: 0px
+  border-right: 1px solid rgba($divider-color, .60)
   white-space: nowrap
   overflow: hidden
+  &:last-child
+    border-right: none
 
-th, td
+th
   &.left
     text-align: left
 
 table
   width: 100%
   border-collapse: collapse
-  td
-    font-size: 30px
-    padding: 10px 20px
-    text-align: center
+  background-color: white
+  box-shadow: 5px 5px 5px grey
   th
     font-size: 40px
     padding: 10px 20px
   tr
     background-color: rgba(255, 255, 255, .47)
     &#header
-      background-color: #929AA6
+      background-color: #455e64
+      color: white
     &:nth-child(odd)
-      background: rgba(220, 220, 220, .47)
-      &.danger
-        background: rgba(255, 100, 100, .47)
+      background: rgba($normal-color, $odd-opac)
       &.clickable
         &:hover
-          background-color: rgba(180, 180, 180, .47)
+          background-color: rgba($hover-color, $odd-opac)
+      &.danger
+        background: rgba($danger-color, $odd-opac)
+        &.clickable
+          &:hover
+            background-color: rgba($danger-hiver-color, $odd-opac)
     &:nth-child(even)
-      &.danger
-        background: rgba(255, 220, 220, .47)
+      background: rgba($normal-color, $even-opac)
       &.clickable
         &:hover
-          background-color: rgba(250, 250, 250, .27)
-    &.clickable
-      cursor: pointer
+          background-color: rgba($hover-color, $even-opac)
+      &.danger
+        background: rgba($danger-color, $even-opac)
+        &.clickable
+          &:hover
+            background-color: rgba($danger-hiver-color, $even-opac)

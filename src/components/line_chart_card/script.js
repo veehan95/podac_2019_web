@@ -1,7 +1,7 @@
-import Line_Chart from '../../assets/charts/line_chart'
+import Line_Chart from '@/components/line_chart'
 
 export default {
-  name: 'Card',
+  name: 'LineChartCard',
   components: { Line_Chart },
   props: [ "val_obj" ],
 }

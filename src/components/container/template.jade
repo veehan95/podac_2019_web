@@ -2,23 +2,13 @@
   #background_deco
   #page_container
     #header
-      h1 {{ title }}
-      div.small
-        button.small(@click="openNotification")
-          img.center(src="@/assets/icon/notification.png")
-        #notification.sub(style="display: none")
-          p.center.text_center no notification
-      div.large
-        button.large(@click="openUserInfo")
-          img.round.center(src="@/assets/icon/default_user_profile.png")
-        #user_info.sub(style="display: none")
-          h3(style="text-align: left") Agent 1
-          p agent1@email.com
-          hr(style="margin: 10px 0")
-          button(style="text-align: left") Setting
-          button(style="text-align: left") FAQ
-          button(style="text-align: left") Help
-          hr(style="margin: 10px 0")
-          button(style="text-align: left" @click="logout") logout
+      h1(style="width: 30%") {{ title }}
+      div(style='width: 60%;position:relative')
+        input(style="height:100%;width:calc(100% - 20px)" v-model="search" placeholder="search" v-on-clickaway="away")
+        div(v-if="show" style="position:absolute;background-color: white")
+          button(style="width: 100%; text-align:left" v-if="result.length > 0" v-for="(e, i) in result" :key="`idkLa_${i}`" @click='to(e)') {{ e }}
+          p(v-else) no result
+      Notification
+      MoreOptions
     #content
       slot

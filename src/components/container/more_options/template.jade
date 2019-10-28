@@ -1,0 +1,12 @@
+HangingPopup(:classes='"large"')
+  template(slot='button')
+    img.round.center(src='@/assets/icon/default_user_profile.png')
+  template#notification(slot="content")
+    h3(style='text-align: left') {{ first_name }} {{ last_name }}
+    p {{ email }}
+    hr(style='margin: 10px 0')
+    button(style='text-align: left' @click="under_construction()") Setting
+    button(style='text-align: left' @click="under_construction()") FAQ
+    button(style='text-align: left' @click="under_construction()") Help
+    hr(style='margin: 10px 0')
+    button(style='text-align: left' @click='logout') logout

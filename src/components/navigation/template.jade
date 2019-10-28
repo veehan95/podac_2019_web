@@ -1,9 +1,9 @@
 .nav_container
   .outer_div
-    p logo
+    img.center(src='@/assets/icon/ABC.png')
   .center_div
     ul.center
-      li(v-for="link in navigation" :class="{active: page_name == link.name}")
-        router-link(:to="link.url")
-          img.center(:src="require(`@/assets/icon/${link.image}`)")
+      li(v-for='link in navigation' :class='{active: page_name == link.name}')
+        router-link(:to='link.url')
+          img.center(:src='require(`@/assets/icon/${link.image}`)')
   .outer_div

@@ -1,0 +1,5 @@
+div(:class='classes')
+  button(:class='classes' @click='toggleDisplay()')
+    slot(name='button')
+  div.hanging_popup.sub(:style='{display: show ? "block" : "none"}')
+    slot(name='content')

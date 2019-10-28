@@ -1,4 +1,4 @@
 #app
-  LeftNavigation(v-if="authorized" :page_name="page_name")
+  LeftNavigation(v-if='authorized')
   #container
-    router-view(@page="getPageName")
+    router-view

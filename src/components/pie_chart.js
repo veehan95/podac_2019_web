@@ -11,7 +11,7 @@ const options = {
 export default {
   extends: Pie,
   name: 'Pie_Chart',
-  props: ["rating"],
+  props: ['rating'],
   watch: {
     rating: function(newVal) {
       this.renderChart({

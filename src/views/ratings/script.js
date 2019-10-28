@@ -1,6 +1,6 @@
 import Container from '../../components/container'
 import Table from '../../components/table'
-import { get_rating_list, get_agent } from '../../assets/db'
+import { get_rating_list, get_agent } from '@/utils/db'
 
 export default {
     name: 'home',
@@ -8,18 +8,20 @@ export default {
     data() {
       return {
         theads: [
-          { prop: "loc", name: "Location", align: "left" },
-          { prop: "rating", name: "Rating" },
-          { prop: "rating_q", name: "Rating Quantity" },
-          { prop: "agent", name: "Agent Assigned" },
+          { prop: 'loc', name: 'Location', align: 'left' },
+          { prop: 'rating', name: 'Rating' },
+          { prop: 'rating_q', name: 'Rating Quantity' },
+          { prop: 'agent', name: 'Agent Assigned' },
         ],
         vals: []
       }
     },
-    beforeCreate() { this.$emit('page', 'Ratings') },
+    beforeCreate() {
+      this.$store.commit('change_page', 'Ratings')
+    },
     methods: {
       async createRow(location, row) {
-        let agent = "N/A"
+        let agent = 'N/A'
         if (row.agent_assigned != undefined) {
           const name = await get_agent(row.agent_assigned)
           agent = `${name.last_name} ${name.first_name}`
@@ -27,10 +29,10 @@ export default {
         return {
           loc: location.replace(/_/g, ' '),
           href: location,
-          rating: (row.total_rating / row.number_of_ratings).toFixed(2),
-          rating_q: row.number_of_ratings,
+          rating: (row.rating.total / row.rating.number_of_rating).toFixed(2),
+          rating_q: row.rating.number_of_rating,
           agent,
-          danger: (row.total_rating / row.number_of_ratings) < 2
+          danger: (row.rating.total / row.rating.number_of_rating) < 2
         }
       },
       async updateTable() {

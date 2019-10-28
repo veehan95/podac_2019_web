@@ -1,4 +1,7 @@
 export default {
   name: 'Card',
-  props: [ "icon", "title", "details" ],
+  props: {
+    center_width: {default: 80},
+    title: String,
+  }
 }
