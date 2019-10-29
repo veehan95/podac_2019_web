@@ -8,6 +8,7 @@ export default {
     'values',
     'align',
     'image',
+    'item_id',
   ],
   methods: {
     rowClicked() {
@@ -21,6 +22,12 @@ export default {
     value_limiter(val) {
       const str_val = String(val)
       return str_val.length < 50 ? str_val : str_val.substring(0, 50) + '...'
+    },
+    is_bool(val) { return typeof val === 'boolean' },
+    able_item(e) {
+      document.dispatchEvent(new CustomEvent(
+        "myCheckbox", {detail: { id: this.$props.item_id, val:e.target.checked }}
+      ))
     },
   },
 }

@@ -101,6 +101,13 @@ const get_image = async (image_name)=> {
   })
 }
 
+const update_reward_avail = async (val)=> {
+  reward_ref
+    .child(val.id)
+    .child('available')
+    .set(val.val)
+}
+
 export {
   get_rating,
   get_agent,
@@ -110,4 +117,5 @@ export {
   get_image,
   get_reward,
   get_user_id,
+  update_reward_avail,
 }

@@ -1,4 +1,5 @@
 tr(:class='{clickable, danger}' @click='rowClicked()')
   td(v-for='(each, i) in values' :class='align[i]')
     img(v-if="image[i]" :src='each' style="max-width: 200px; max-height: 200px")
+    input.myCheckbox(@change="able_item" type="checkbox" name="myCheckBox" :checked="each" v-else-if="is_bool(each)")
     p(v-else) {{ value_limiter(each) || 'N/A' }}

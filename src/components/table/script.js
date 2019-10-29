@@ -32,6 +32,7 @@ export default {
             image: this.$props.theads.map(th => th.image || false),
             url: item.href,
             e_fire: item.e_fire,
+            item: item
           }
         })
     },

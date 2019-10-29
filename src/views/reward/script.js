@@ -1,6 +1,6 @@
 import Container from '../../components/container'
 import Table from '../../components/table'
-import { get_reward, get_image } from '@/utils/db'
+import { get_reward, get_image, update_reward_avail } from '@/utils/db'
 
 export default {
   name: 'Reward',
@@ -31,9 +31,13 @@ export default {
               image: await get_image(reward[key].image),
               name: reward[key].name,
               points: reward[key].points,
+              id: key,
             }
           })
         this.$data.vals = await Promise.all(prom)
+      })
+      document.addEventListener("myCheckbox", x => {
+        update_reward_avail(x.detail)
       })
   },
 }
