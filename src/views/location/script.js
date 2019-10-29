@@ -71,7 +71,7 @@ export default {
         const feedback_promise = Object.keys(feedbacks)
           .map(async key => {
             const user = await get_user(feedbacks[key].user)
-            const image_url = await get_image('123451.jpg')
+            const image_url = await get_image(/.*\.jpg$/.test(feedbacks[key].image) ? feedbacks[key].image : `${feedbacks[key].image}.jpeg`)
             return {
               coordinate: `${feedbacks[key].coordinate.y}, ${feedbacks[key].coordinate.y}`,
               image_mark: feedbacks[key].image_mark ? feedbacks[key].image_mark.length : 0,
